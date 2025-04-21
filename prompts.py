@@ -75,7 +75,7 @@ variables_step1 = {"user_prompt": "Suggest a destination and a restaurant."}
 with LLMObs.annotation_context(prompt=Prompt(id=prompt_id,
                            name=prompt_name,
                            version="1.0.0",
-                           template=[("User", prompt_step1)],
+                           chat_template=[{"role":"User", "content":prompt_step1}],
                            variables=variables_step1
                            )):
     response_step1 = query_openai(user_prompt=prompt_step1, variables=variables_step1)
@@ -112,7 +112,7 @@ variables_step2 = {
 with LLMObs.annotation_context(prompt=Prompt(id=prompt_id,
                            name=prompt_name,
                            version="1.1.0",
-                           template=[("User", prompt_step2)],
+                           chat_template=[{"role":"User", "content":prompt_step2}],
                            variables=variables_step2
                            )):
     response_step2 = query_openai(user_prompt=prompt_step2, variables=variables_step2)
@@ -162,7 +162,7 @@ variables_step3 = {
 with LLMObs.annotation_context(prompt=Prompt(id=prompt_id,
                            name=prompt_name,
                            version="2.0.0",
-                           template=[("System",system_prompt_step3),("User", prompt_step3)],
+                           chat_template=[{"role":"System", "content":system_prompt_step3},{"role":"User", "content":prompt_step3}],
                            variables=variables_step3
                            )):
     response_step3 = query_openai(system_prompt=system_prompt_step3, user_prompt=prompt_step3, variables=variables_step3)
@@ -219,7 +219,7 @@ variables_step4 = {
 with LLMObs.annotation_context(prompt=Prompt(id=prompt_id,
                            name=prompt_name,
                            version="2.1.0",
-                           template=[("System",system_prompt_step4),("User", prompt_step4)],
+                           chat_template=[{"role":"System", "content":system_prompt_step4},{"role":"User", "content":prompt_step4}],
                            variables=variables_step4
                            )):
     response_step4 = query_openai(system_prompt=system_prompt_step4, user_prompt=prompt_step4, variables=variables_step4)
